@@ -1,0 +1,17 @@
+version: '3'
+services:
+  percona:
+    image: mysql:5.7
+    container_name: data-mysql
+    command: mysqld 
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      "MYSQL_ALLOW_EMPTY_PASSWORD": "yes"
+networks:
+  default:
+    external:
+      name: datanet
